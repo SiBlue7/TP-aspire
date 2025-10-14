@@ -1,0 +1,6 @@
+@projetMicrosoftTech.ApiService_HostAddress = http://localhost:5259
+
+GET {{projetMicrosoftTech.ApiService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
