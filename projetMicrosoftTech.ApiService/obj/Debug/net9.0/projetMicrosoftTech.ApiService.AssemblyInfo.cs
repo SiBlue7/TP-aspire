@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("projetMicrosoftTech.ApiService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+903af81ac5b985d8f3ed383568555da09c283d51")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29455092fd3be938d4418540cb549d2ea8d9f029")]
 [assembly: System.Reflection.AssemblyProductAttribute("projetMicrosoftTech.ApiService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("projetMicrosoftTech.ApiService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
