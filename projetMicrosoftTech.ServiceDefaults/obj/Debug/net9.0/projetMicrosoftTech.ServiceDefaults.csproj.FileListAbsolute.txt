@@ -1,0 +1,13 @@
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\bin\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.deps.json
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\bin\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.dll
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\bin\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.pdb
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.csproj.AssemblyReference.cache
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.AssemblyInfoInputs.cache
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.AssemblyInfo.cs
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.csproj.CoreCompileInputs.cache
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.sourcelink.json
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.dll
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\refint\projetMicrosoftTech.ServiceDefaults.dll
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.pdb
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\ref\projetMicrosoftTech.ServiceDefaults.dll

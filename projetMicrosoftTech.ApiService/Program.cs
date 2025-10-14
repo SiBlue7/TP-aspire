@@ -15,6 +15,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+//minimal endpoints
+app.MapGet("/api/todo", () => new[] { "Tâche 1", "Tâche 2" });
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
