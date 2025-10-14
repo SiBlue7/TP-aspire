@@ -22,5 +22,15 @@
   <ItemGroup>
     <None Include="bin\Debug\net9.0\init.sql" />
   </ItemGroup>
+    
+  <ItemGroup>
+      <None Update="init.sql">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+  </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="bin\Debug\net9.0\" />
+    </ItemGroup>
 
 </Project>

@@ -172,3 +172,4 @@ C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMi
 C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.AppHost\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.AppHost\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.AppHost\bin\Debug\net9.0\runtimes\win\lib\net9.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.AppHost\bin\Debug\net9.0\init.sql
