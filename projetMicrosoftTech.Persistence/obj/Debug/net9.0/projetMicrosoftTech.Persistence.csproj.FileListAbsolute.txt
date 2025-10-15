@@ -1,0 +1,13 @@
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\bin\Debug\net9.0\projetMicrosoftTech.Persistence.deps.json
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\bin\Debug\net9.0\projetMicrosoftTech.Persistence.dll
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\bin\Debug\net9.0\projetMicrosoftTech.Persistence.pdb
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.csproj.AssemblyReference.cache
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.AssemblyInfoInputs.cache
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.AssemblyInfo.cs
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.sourcelink.json
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.dll
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\refint\projetMicrosoftTech.Persistence.dll
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.pdb
+C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\ref\projetMicrosoftTech.Persistence.dll
