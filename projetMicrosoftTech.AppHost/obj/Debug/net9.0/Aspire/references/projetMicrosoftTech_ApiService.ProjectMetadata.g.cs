@@ -15,5 +15,5 @@ public class projetMicrosoftTech_ApiService : global::Aspire.Hosting.IProjectMet
     /// <summary>
     /// The path to the projetMicrosoftTech_ApiService project.
     /// </summary>
-    public string ProjectPath => """C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ApiService\projetMicrosoftTech.ApiService.csproj""";
+    public string ProjectPath => """C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ApiService\projetMicrosoftTech.ApiService.csproj""";
 }

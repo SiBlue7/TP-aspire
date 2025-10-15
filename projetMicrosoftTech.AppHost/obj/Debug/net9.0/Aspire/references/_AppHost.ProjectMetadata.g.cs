@@ -17,5 +17,5 @@ public class projetMicrosoftTech_AppHost
     /// <summary>
     /// The path to the Aspire Host project.
     /// </summary>
-    public static string ProjectPath => """C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.AppHost""";
+    public static string ProjectPath => """C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.AppHost""";
 }

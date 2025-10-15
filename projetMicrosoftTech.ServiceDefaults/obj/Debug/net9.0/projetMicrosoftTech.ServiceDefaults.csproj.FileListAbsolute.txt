@@ -11,3 +11,16 @@ C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMi
 C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\refint\projetMicrosoftTech.ServiceDefaults.dll
 C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.pdb
 C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\ref\projetMicrosoftTech.ServiceDefaults.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\bin\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.deps.json
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\bin\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\bin\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.pdb
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.csproj.AssemblyReference.cache
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.AssemblyInfoInputs.cache
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.AssemblyInfo.cs
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.csproj.CoreCompileInputs.cache
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.sourcelink.json
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\refint\projetMicrosoftTech.ServiceDefaults.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\projetMicrosoftTech.ServiceDefaults.pdb
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ServiceDefaults\obj\Debug\net9.0\ref\projetMicrosoftTech.ServiceDefaults.dll

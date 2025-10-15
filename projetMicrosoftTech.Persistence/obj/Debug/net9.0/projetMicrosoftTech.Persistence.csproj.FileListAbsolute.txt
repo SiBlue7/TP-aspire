@@ -11,3 +11,16 @@ C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMi
 C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\refint\projetMicrosoftTech.Persistence.dll
 C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.pdb
 C:\Users\enzo2\Developpement\Ecole\M2\MicrosoftTech\projetMicrosoftTech\projetMicrosoftTech.Persistence\obj\Debug\net9.0\ref\projetMicrosoftTech.Persistence.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\bin\Debug\net9.0\projetMicrosoftTech.Persistence.deps.json
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\bin\Debug\net9.0\projetMicrosoftTech.Persistence.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\bin\Debug\net9.0\projetMicrosoftTech.Persistence.pdb
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.csproj.AssemblyReference.cache
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.AssemblyInfoInputs.cache
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.AssemblyInfo.cs
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.sourcelink.json
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\refint\projetMicrosoftTech.Persistence.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.pdb
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\ref\projetMicrosoftTech.Persistence.dll

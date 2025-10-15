@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\enzo2\\Developpement\\Ecole\\M2\\MicrosoftTech\\projetMicrosoftTech\\projetMicrosoftTech.Persistence\\projetMicrosoftTech.Persistence.csproj": {}
+    "C:\\Users\\themi\\Desktop\\CoursM1\\M2\\Microsoft\\TP-aspire\\projetMicrosoftTech.Persistence\\projetMicrosoftTech.Persistence.csproj": {}
   },
   "projects": {
-    "C:\\Users\\enzo2\\Developpement\\Ecole\\M2\\MicrosoftTech\\projetMicrosoftTech\\projetMicrosoftTech.Persistence\\projetMicrosoftTech.Persistence.csproj": {
+    "C:\\Users\\themi\\Desktop\\CoursM1\\M2\\Microsoft\\TP-aspire\\projetMicrosoftTech.Persistence\\projetMicrosoftTech.Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\enzo2\\Developpement\\Ecole\\M2\\MicrosoftTech\\projetMicrosoftTech\\projetMicrosoftTech.Persistence\\projetMicrosoftTech.Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\themi\\Desktop\\CoursM1\\M2\\Microsoft\\TP-aspire\\projetMicrosoftTech.Persistence\\projetMicrosoftTech.Persistence.csproj",
         "projectName": "projetMicrosoftTech.Persistence",
-        "projectPath": "C:\\Users\\enzo2\\Developpement\\Ecole\\M2\\MicrosoftTech\\projetMicrosoftTech\\projetMicrosoftTech.Persistence\\projetMicrosoftTech.Persistence.csproj",
-        "packagesPath": "C:\\Users\\enzo2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\enzo2\\Developpement\\Ecole\\M2\\MicrosoftTech\\projetMicrosoftTech\\projetMicrosoftTech.Persistence\\obj\\",
+        "projectPath": "C:\\Users\\themi\\Desktop\\CoursM1\\M2\\Microsoft\\TP-aspire\\projetMicrosoftTech.Persistence\\projetMicrosoftTech.Persistence.csproj",
+        "packagesPath": "C:\\Users\\themi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\themi\\Desktop\\CoursM1\\M2\\Microsoft\\TP-aspire\\projetMicrosoftTech.Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\enzo2\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\themi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

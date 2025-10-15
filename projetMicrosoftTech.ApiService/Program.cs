@@ -36,26 +36,14 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-// Swagger uniquement en dev
+app.MapDefaultEndpoints();
+
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
-}
-
-// Création / migration de la base et seed de données
-using (var scope = app.Services.CreateScope())
-{
-    var context = scope.ServiceProvider.GetRequiredService<MyAppDbContext>();
-    context.Database.EnsureCreated();
-
-    if (!context.Cat.Any())
+    using (var scope = app.Services.CreateScope())
     {
-        context.Cat.AddRange(
-            new Cat { name = "Miaou" },
-            new Cat { name = "Gribouille" },
-            new Cat { name = "Tigrou" }
-        );
-        context.SaveChanges();
+        var context = scope.ServiceProvider.GetRequiredService<MyAppDbContext>();
+        await context.Database.EnsureCreatedAsync();
     }
 }
 

@@ -11,23 +11,22 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("250bec4b-5ab0-4b30-a96e-0214349616ae")]
-[assembly: System.Reflection.AssemblyMetadata("dcpclipath", ("C:\\Users\\enzo2\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.5.1\\tools\\d" +
+[assembly: System.Reflection.AssemblyMetadata("dcpclipath", ("C:\\Users\\themi\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.5.1\\tools\\d" +
     "cp.exe"))]
-[assembly: System.Reflection.AssemblyMetadata("dcpextensionpaths", ("C:\\Users\\enzo2\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.5.1\\tools\\e" +
+[assembly: System.Reflection.AssemblyMetadata("dcpextensionpaths", ("C:\\Users\\themi\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.5.1\\tools\\e" +
     "xt\\"))]
-[assembly: System.Reflection.AssemblyMetadata("dcpbinpath", ("C:\\Users\\enzo2\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.5.1\\tools\\e" +
+[assembly: System.Reflection.AssemblyMetadata("dcpbinpath", ("C:\\Users\\themi\\.nuget\\packages\\aspire.hosting.orchestration.win-x64\\9.5.1\\tools\\e" +
     "xt\\bin\\"))]
-[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", ("C:\\Users\\enzo2\\Developpement\\Ecole\\M2\\MicrosoftTech\\projetMicrosoftTech\\projetMic" +
-    "rosoftTech.AppHost"))]
+[assembly: System.Reflection.AssemblyMetadata("apphostprojectpath", "C:\\Users\\themi\\Desktop\\CoursM1\\M2\\Microsoft\\TP-aspire\\projetMicrosoftTech.AppHost")]
 [assembly: System.Reflection.AssemblyMetadata("apphostprojectname", "projetMicrosoftTech.AppHost.csproj")]
-[assembly: System.Reflection.AssemblyMetadata("aspiredashboardpath", ("C:\\Users\\enzo2\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\9.5.1\\tools\\Aspire.Da" +
+[assembly: System.Reflection.AssemblyMetadata("aspiredashboardpath", ("C:\\Users\\themi\\.nuget\\packages\\aspire.dashboard.sdk.win-x64\\9.5.1\\tools\\Aspire.Da" +
     "shboard.exe"))]
-[assembly: System.Reflection.AssemblyMetadataAttribute("apphostprojectbaseintermediateoutputpath", ("C:\\Users\\enzo2\\Developpement\\Ecole\\M2\\MicrosoftTech\\projetMicrosoftTech\\projetMic" +
-    "rosoftTech.AppHost\\obj\\"))]
+[assembly: System.Reflection.AssemblyMetadataAttribute("apphostprojectbaseintermediateoutputpath", ("C:\\Users\\themi\\Desktop\\CoursM1\\M2\\Microsoft\\TP-aspire\\projetMicrosoftTech.AppHost" +
+    "\\obj\\"))]
 [assembly: System.Reflection.AssemblyCompanyAttribute("projetMicrosoftTech.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d52f99ded339e991634fae513967a0b546985557")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d76f6cd67bc0cdb1a07a8f8afabbd3c1a498c681")]
 [assembly: System.Reflection.AssemblyProductAttribute("projetMicrosoftTech.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("projetMicrosoftTech.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
