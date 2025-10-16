@@ -1,0 +1,15 @@
+meta {
+  name: Get all cats
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:5259/api/cats
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

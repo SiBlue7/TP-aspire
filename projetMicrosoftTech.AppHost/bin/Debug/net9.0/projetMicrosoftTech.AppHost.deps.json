@@ -10,6 +10,7 @@
         "dependencies": {
           "Aspire.Dashboard.Sdk.win-x64": "9.5.1",
           "Aspire.Hosting.AppHost": "9.5.1",
+          "Aspire.Hosting.Keycloak": "9.5.1-preview.1.25502.11",
           "Aspire.Hosting.Orchestration.win-x64": "9.5.1",
           "Aspire.Hosting.SqlServer": "9.5.1"
         },
@@ -121,6 +122,40 @@
         },
         "runtime": {
           "lib/net9.0/Aspire.Hosting.AppHost.dll": {
+            "assemblyVersion": "9.5.1.0",
+            "fileVersion": "9.500.125.50211"
+          }
+        }
+      },
+      "Aspire.Hosting.Keycloak/9.5.1-preview.1.25502.11": {
+        "dependencies": {
+          "AspNetCore.HealthChecks.Uris": "9.0.0",
+          "Aspire.Hosting": "9.5.1",
+          "Google.Protobuf": "3.32.0",
+          "Grpc.AspNetCore": "2.71.0",
+          "Grpc.Net.ClientFactory": "2.71.0",
+          "Grpc.Tools": "2.72.0",
+          "Humanizer.Core": "2.14.1",
+          "JsonPatch.Net": "3.3.0",
+          "KubernetesClient": "17.0.14",
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Configuration.Binder": "9.0.9",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.9",
+          "Microsoft.Extensions.Hosting": "9.0.9",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Http": "9.0.9",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Options": "9.0.9",
+          "Microsoft.Extensions.Primitives": "9.0.9",
+          "Newtonsoft.Json": "13.0.3",
+          "Polly.Core": "8.6.3",
+          "Semver": "3.0.0",
+          "StreamJsonRpc": "2.22.11",
+          "System.IO.Hashing": "9.0.8"
+        },
+        "runtime": {
+          "lib/net8.0/Aspire.Hosting.Keycloak.dll": {
             "assemblyVersion": "9.5.1.0",
             "fileVersion": "9.500.125.50211"
           }
@@ -1349,6 +1384,13 @@
       "sha512": "sha512-pgfoff0TJggue6XyGx01LOZtMp3GLhohRggMK8L3dBAeg4Jm1QIiQiLJC1GFOFXnQMBDHICf25aRbw4/hcSCPA==",
       "path": "aspire.hosting.apphost/9.5.1",
       "hashPath": "aspire.hosting.apphost.9.5.1.nupkg.sha512"
+    },
+    "Aspire.Hosting.Keycloak/9.5.1-preview.1.25502.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-r8KtmNZa1WUrgYEQrBF5NWUK+i4g0Lm71KIpUlucJeOwMqw4Erd8EYxkjaDLTi7PnyPJ8QsF+xNHbu1DplIj4A==",
+      "path": "aspire.hosting.keycloak/9.5.1-preview.1.25502.11",
+      "hashPath": "aspire.hosting.keycloak.9.5.1-preview.1.25502.11.nupkg.sha512"
     },
     "Aspire.Hosting.Orchestration.win-x64/9.5.1": {
       "type": "package",

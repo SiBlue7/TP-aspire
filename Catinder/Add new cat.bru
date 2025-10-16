@@ -1,0 +1,21 @@
+meta {
+  name: Add new cat
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5259/api/cats
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name" : "Tigrou"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

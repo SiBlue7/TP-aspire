@@ -12,4 +12,8 @@ builder.AddProject<Projects.projetMicrosoftTech_WebApp>("webapp")
     .WithReference(apiService)
     .WaitFor(apiService);
 
+var keycloack = builder.AddKeycloak("keycloak", 8090)
+    .WithDataVolume()
+    .WithLifetime(ContainerLifetime.Persistent);
+
 builder.Build().Run();
