@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\projetMicrosoftTech.ApiService\projetMicrosoftTech.ApiService.csproj" />
+    <ProjectReference Include="..\projetMicrosoftTech.WebApp\projetMicrosoftTech.WebApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>

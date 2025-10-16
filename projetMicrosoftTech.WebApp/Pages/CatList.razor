@@ -1,0 +1,37 @@
+﻿@page "/"
+@using projetMicrosoftTech.WebApp.Clients
+@using projetMicrosoftTech.Persistence
+@using projetMicrosoftTech.WebApp.Components
+@inject ICatClient httpClient
+
+@code {
+
+    private List<Cat>? cats = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadCats();
+    }
+    private async Task LoadCats()
+    {
+        cats = await httpClient.GetCatItemsAsync();
+    }
+}
+
+<AddCatForm OnCatAdded="LoadCats" />
+
+<h3>Liste des chats</h3>
+
+@if (cats == null)
+{
+    <p>Chargement ...</p>
+}
+else
+{
+    <ul>
+        @foreach (var cat in cats)
+        {
+            <li>@cat.name</li>
+        }
+    </ul>
+}

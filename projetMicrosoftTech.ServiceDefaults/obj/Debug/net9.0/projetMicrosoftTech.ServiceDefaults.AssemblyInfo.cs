@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("projetMicrosoftTech.ServiceDefaults")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d76f6cd67bc0cdb1a07a8f8afabbd3c1a498c681")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e26e38765aa4e4be96be8bd43b8b1ceba021e584")]
 [assembly: System.Reflection.AssemblyProductAttribute("projetMicrosoftTech.ServiceDefaults")]
 [assembly: System.Reflection.AssemblyTitleAttribute("projetMicrosoftTech.ServiceDefaults")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

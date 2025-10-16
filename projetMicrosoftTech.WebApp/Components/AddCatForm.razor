@@ -1,0 +1,73 @@
+﻿@using projetMicrosoftTech.Persistence
+@using projetMicrosoftTech.WebApp.Clients
+@inject ICatClient Client
+
+<EditForm EditContext="editContext" OnValidSubmit="Submit" FormName="add-todo-item-form">
+    <h4>Ajouter un nouveau chat</h4>
+    <div class="mb-3">
+        <label for="catItem" class="form-label">Nom du chat</label>
+        <InputText type="text" class="form-control" id="catItem" placeholder="Entrez le nom du chat" @bind-Value="Model!.name" required/>
+    </div>
+    
+    <div>
+        <ValidationMessage For="() => Model!.name" />
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Ajouter le chat</button>
+</EditForm>
+
+@code {
+    [SupplyParameterFromForm] 
+    private CatFormItem? Model { get; set; }
+    
+    private EditContext? editContext;
+    private ValidationMessageStore? messageStore;
+
+    [Parameter] 
+    public EventCallback OnCatAdded { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Model ??= new CatFormItem();
+        editContext = new EditContext(Model);
+        editContext.OnValidationRequested += HandleValidationRequested;
+        messageStore = new ValidationMessageStore(editContext);
+    }
+    
+    private void HandleValidationRequested(object? sender,
+        ValidationRequestedEventArgs args)
+    {
+        messageStore?.Clear();
+
+        // Custom validation logic
+        if (string.IsNullOrWhiteSpace(Model!.name))
+        {
+            messageStore?.Add(() => Model.name, "Title is required.");
+        }
+
+        if (Model.name.Length > 100)
+        {
+            messageStore?.Add(() => Model.name, "Title cannot exceed 100 characters.");
+        }
+    }
+
+    private async Task Submit()
+    {
+        if (Model is not null)
+        {
+            await Client.CreateCatItemAsync(new Cat()
+            {
+                Id = 0,
+                name = Model.name,
+            });
+        }
+        await OnCatAdded.InvokeAsync();
+        Model = new CatFormItem();
+    }
+
+    public class CatFormItem
+    {
+        public string name { get; set; } = string.Empty;
+    }
+
+}

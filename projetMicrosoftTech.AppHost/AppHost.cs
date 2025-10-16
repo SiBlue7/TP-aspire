@@ -4,8 +4,12 @@ var sql = builder.AddSqlServer("sql")
     .WithDataVolume();
 var db = sql.AddDatabase("KohakuDB");
 
-builder.AddProject<Projects.projetMicrosoftTech_ApiService>("apiservice")
+var apiService = builder.AddProject<Projects.projetMicrosoftTech_ApiService>("apiservice")
     .WithReference(sql)
     .WaitFor(db);
+
+builder.AddProject<Projects.projetMicrosoftTech_WebApp>("webapp")
+    .WithReference(apiService)
+    .WaitFor(apiService);
 
 builder.Build().Run();

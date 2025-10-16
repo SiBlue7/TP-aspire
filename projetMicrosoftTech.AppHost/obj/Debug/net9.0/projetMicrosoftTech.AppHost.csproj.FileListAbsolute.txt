@@ -346,3 +346,4 @@ C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.AppHos
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.AppHost\obj\Debug\net9.0\projetMicrosoftTech.AppHost.pdb
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.AppHost\obj\Debug\net9.0\projetMicrosoftTech.AppHost.genruntimeconfig.cache
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.AppHost\obj\Debug\net9.0\ref\projetMicrosoftTech.AppHost.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.AppHost\obj\Debug\net9.0\Aspire\references\projetMicrosoftTech_WebApp.ProjectMetadata.g.cs
