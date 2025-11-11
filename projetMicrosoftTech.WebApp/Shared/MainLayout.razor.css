@@ -1,37 +1,59 @@
+/* ===== Global layout ===== */
+
 .page {
     position: relative;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to bottom, #ffefba, #ffffff);
 }
 
 main {
     flex: 1;
+    backdrop-filter: blur(4px);
 }
+
+
+/* ===== SIDEBAR ===== */
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    width: 100%;
+    background: linear-gradient(180deg, #ffbcbc 0%, #ffcfcf 50%, #ffe9e9 100%);
+    border-right: 2px solid rgba(0,0,0,0.05);
+    padding-top: 1rem;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.05);
 }
+
+
+/* ===== TOP BAR ===== */
 
 .top-row {
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #d6d5d5;
-    justify-content: flex-end;
     height: 3.5rem;
+    background: rgba(255, 255, 255, 0.65);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    backdrop-filter: blur(10px);
 }
 
-    .top-row ::deep a, .top-row .btn-link {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-    }
+.top-row ::deep a,
+.top-row .btn-link {
+    white-space: nowrap;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    color: #c75c5c;
+}
 
-    .top-row a:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.top-row a:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ===== RESPONSIVE ===== */
 
 @media (max-width: 640.98px) {
+
     .top-row:not(.auth) {
         display: none;
     }
@@ -40,30 +62,37 @@ main {
         justify-content: space-between;
     }
 
-    .top-row a, .top-row .btn-link {
+    .top-row a,
+    .top-row .btn-link {
         margin-left: 0;
     }
 }
 
+
 @media (min-width: 641px) {
+
     .page {
         flex-direction: row;
     }
 
     .sidebar {
-        width: 250px;
+        width: 240px;
         height: 100vh;
         position: sticky;
         top: 0;
+        border-right: 2px solid rgba(0,0,0,0.05);
     }
 
     .top-row {
         position: sticky;
         top: 0;
-        z-index: 1;
+        z-index: 5;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(8px);
     }
 
-    .top-row, article {
+    .top-row,
+    article {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }

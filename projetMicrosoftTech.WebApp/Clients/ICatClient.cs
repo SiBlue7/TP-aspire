@@ -6,4 +6,6 @@ public interface ICatClient
 {
     Task<List<Cat>> GetCatItemsAsync();
     Task<Cat> CreateCatItemAsync(Cat item);
+    
+    Task UploadCatPhotoAsync(int catId, string fileName, byte[] fileData);
 }

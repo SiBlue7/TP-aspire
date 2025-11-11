@@ -440,3 +440,5 @@ C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ApiSer
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ApiService\obj\Debug\net9.0\projetMicrosoftTech.ApiService.pdb
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ApiService\obj\Debug\net9.0\projetMicrosoftTech.ApiService.genruntimeconfig.cache
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ApiService\obj\Debug\net9.0\ref\projetMicrosoftTech.ApiService.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ApiService\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.ApiService\bin\Debug\net9.0\projetMicrosoftTech.ApiService.staticwebassets.runtime.json

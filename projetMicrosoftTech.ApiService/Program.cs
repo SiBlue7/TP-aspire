@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using projetMicrosoftTech.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +17,13 @@ builder.Services.AddDbContext<MyAppDbContext>(options =>
         var cat = context.Set<Cat>().FirstOrDefault(t => t.name == "Kohaku");
         if (cat == null)
         {
-            context.Set<Cat>().Add(new Cat { name = "Kohaku"});
+            cat = new Cat
+            {
+                name = "Kohaku", age = 1, sex = "mâle",
+                description = "Mon Kohaku, le plus beau et le plus parfait des chats existants en ce monde !"
+            };
+            context.Set<Cat>().Add(cat);
+            context.Set<Photo>().Add(new Photo { cat = cat, photoUrl = ""});
             context.SaveChanges();
         }
 
@@ -25,7 +34,13 @@ builder.Services.AddDbContext<MyAppDbContext>(options =>
         var cat = await context.Set<Cat>().FirstOrDefaultAsync(t => t.name == "Kohaku", cancellationToken);
         if (cat == null)
         {
-            context.Set<Cat>().Add(new Cat { name = "Kohaku"});
+            cat = new Cat
+            {
+                name = "Kohaku", age = 1, sex = "mâle",
+                description = "Mon Kohaku, le plus beau et le plus parfait des chats existants en ce monde !"
+            };
+            context.Set<Cat>().Add(cat);
+            context.Set<Photo>().Add(new Photo { cat = cat, photoUrl = ""});
             await context.SaveChangesAsync(cancellationToken);
         }
     });
@@ -33,6 +48,25 @@ builder.Services.AddDbContext<MyAppDbContext>(options =>
 
 // OpenAPI (Swagger simplifié)
 builder.Services.AddOpenApi();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+    {
+        options.Authority = builder.Configuration["Authentication:OIDC:Authority"];
+        options.Audience = builder.Configuration["Authentication:OIDC:Audience"];
+        options.RequireHttpsMetadata = false;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateAudience = true,
+            ValidateIssuer = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            NameClaimType = "name",
+            RoleClaimType = "role",
+        };
+    });
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -50,39 +84,63 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // --- Minimal API endpoints ---
-app.MapGet("/api/cats", async (MyAppDbContext db) => await db.Cat.ToListAsync());
+app.MapGet("/api/cats", [Authorize] async (MyAppDbContext db) => 
+    await db.Cat.Include(c => c.photos).ToListAsync());
 
-app.MapPost("/api/cats", async (Cat item, MyAppDbContext db) =>
+
+app.MapPost("/api/cats", [Authorize] async (Cat item, MyAppDbContext db) =>
 {
     db.Cat.Add(item);
     await db.SaveChangesAsync();
-    return Results.Created($"/api/cats/{item.Id}", item);
+    return Results.Created($"/api/cats/{item.id}", item);
 });
 
-// --- Exemple météo ---
-var summaries = new[]
+app.MapPost("/api/cats/{catId}/photos", [Authorize] async (int catId, HttpRequest request, MyAppDbContext db) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild",
-    "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    // Vérifier que le chat existe
+    if (!await db.Cat.AnyAsync(c => c.id == catId))
+        return Results.NotFound($"Chat avec l'id {catId} introuvable.");
 
-app.MapGet("/weatherforecast", () =>
+    // Lire les fichiers depuis le multipart form
+    if (!request.HasFormContentType)
+        return Results.BadRequest("Le contenu doit être de type multipart/form-data.");
+
+    var form = await request.ReadFormAsync();
+    var file = form.Files.FirstOrDefault();
+    if (file == null || file.Length == 0)
+        return Results.BadRequest("Aucun fichier envoyé.");
+    
+    var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+    var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
+    if (!allowedExtensions.Contains(extension))
+        return Results.BadRequest("Type de fichier non autorisé.");
+    
+    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+    if (!Directory.Exists(uploadsFolder))
+        Directory.CreateDirectory(uploadsFolder);
+
+    var filePath = Path.Combine(uploadsFolder, file.FileName);
+
+    using (var stream = new FileStream(filePath, FileMode.Create))
     {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast");
+        await file.CopyToAsync(stream);
+    }
+
+    var photo = new Photo
+    {
+        catId = catId,
+        photoUrl = file.FileName
+    };
+
+    db.Photo.Add(photo);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/api/cats/{catId}/photos/{photo.id}", photo);
+});
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseStaticFiles();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

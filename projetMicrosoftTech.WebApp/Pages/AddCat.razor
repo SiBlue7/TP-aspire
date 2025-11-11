@@ -1,0 +1,14 @@
+﻿@page "/add-cat"
+@* @attribute [Authorize(Roles = "admin")] *@
+@attribute [Authorize]
+<link href="css/catList.css" rel="stylesheet" />
+<h3>Ajouter un nouveau chat</h3>
+
+<AddCatForm OnCatAdded="HandleCatAdded" />
+
+@code {
+    private async Task HandleCatAdded()
+    {
+        await Task.CompletedTask;
+    }
+}

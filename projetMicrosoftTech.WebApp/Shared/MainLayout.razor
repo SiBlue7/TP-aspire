@@ -1,4 +1,9 @@
 ﻿@inherits LayoutComponentBase
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Components.Authorization
+@using projetMicrosoftTech.WebApp.Components
+@inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager Navigation
 
 <PageTitle>projetMicrosoftTech.WebApp</PageTitle>
 
@@ -8,8 +13,21 @@
     </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        <div class="top-row px-4 d-flex justify-content-between align-items-center">
+            <div>
+                <!-- Optionnel : titre ou autre contenu à gauche -->
+            </div>
+
+            <div>
+                @if (user == null || !user.Identity?.IsAuthenticated == true)
+                {
+                    <button class="btn btn-link" @onclick="RedirectToLogin">Login</button>
+                }
+                else
+                {
+                    <button class="btn btn-link" @onclick="Logout">Logout</button>
+                }
+            </div>
         </div>
 
         <article class="content px-4">
@@ -17,3 +35,23 @@
         </article>
     </main>
 </div>
+
+@code {
+    private ClaimsPrincipal? user;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        user = authState.User;
+    }
+
+    private void RedirectToLogin()
+    {
+        Navigation.NavigateTo("/authentication/login?returnUrl=" + Uri.EscapeDataString(Navigation.Uri), forceLoad: true);
+    }
+
+    private void Logout()
+    {
+        Navigation.NavigateTo("/authentication/logout?returnUrl=" + Uri.EscapeDataString(Navigation.Uri), forceLoad: true);
+    }
+}

@@ -5,6 +5,14 @@
     <ProjectReference Include="..\projetMicrosoftTech.ServiceDefaults\projetMicrosoftTech.ServiceDefaults.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\catinder.css" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>

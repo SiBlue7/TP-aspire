@@ -1,38 +1,60 @@
 /* _content/projetMicrosoftTech.WebApp/Shared/MainLayout.razor.rz.scp.css */
+/* ===== Global layout ===== */
+
 .page[b-9lz54mcoy6] {
     position: relative;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to bottom, #ffefba, #ffffff);
 }
 
 main[b-9lz54mcoy6] {
     flex: 1;
+    backdrop-filter: blur(4px);
 }
+
+
+/* ===== SIDEBAR ===== */
 
 .sidebar[b-9lz54mcoy6] {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    width: 100%;
+    background: linear-gradient(180deg, #ffbcbc 0%, #ffcfcf 50%, #ffe9e9 100%);
+    border-right: 2px solid rgba(0,0,0,0.05);
+    padding-top: 1rem;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.05);
 }
+
+
+/* ===== TOP BAR ===== */
 
 .top-row[b-9lz54mcoy6] {
-    background-color: #f7f7f7;
-    border-bottom: 1px solid #d6d5d5;
-    justify-content: flex-end;
     height: 3.5rem;
+    background: rgba(255, 255, 255, 0.65);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    backdrop-filter: blur(10px);
 }
 
-    .top-row[b-9lz54mcoy6]  a, .top-row .btn-link[b-9lz54mcoy6] {
-        white-space: nowrap;
-        margin-left: 1.5rem;
-    }
+.top-row[b-9lz54mcoy6]  a,
+.top-row .btn-link[b-9lz54mcoy6] {
+    white-space: nowrap;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    color: #c75c5c;
+}
 
-    .top-row a:first-child[b-9lz54mcoy6] {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.top-row a:first-child[b-9lz54mcoy6] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ===== RESPONSIVE ===== */
 
 @media (max-width: 640.98px) {
+
     .top-row:not(.auth)[b-9lz54mcoy6] {
         display: none;
     }
@@ -41,94 +63,129 @@ main[b-9lz54mcoy6] {
         justify-content: space-between;
     }
 
-    .top-row a[b-9lz54mcoy6], .top-row .btn-link[b-9lz54mcoy6] {
+    .top-row a[b-9lz54mcoy6],
+    .top-row .btn-link[b-9lz54mcoy6] {
         margin-left: 0;
     }
 }
 
+
 @media (min-width: 641px) {
+
     .page[b-9lz54mcoy6] {
         flex-direction: row;
     }
 
     .sidebar[b-9lz54mcoy6] {
-        width: 250px;
+        width: 240px;
         height: 100vh;
         position: sticky;
         top: 0;
+        border-right: 2px solid rgba(0,0,0,0.05);
     }
 
     .top-row[b-9lz54mcoy6] {
         position: sticky;
         top: 0;
-        z-index: 1;
+        z-index: 5;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(8px);
     }
 
-    .top-row[b-9lz54mcoy6], article[b-9lz54mcoy6] {
+    .top-row[b-9lz54mcoy6],
+    article[b-9lz54mcoy6] {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }
 }
 /* _content/projetMicrosoftTech.WebApp/Shared/NavMenu.razor.rz.scp.css */
+/* ===== CATINDER NAVBAR (second section) ===== */
+
+/* Toggle button */
 .navbar-toggler[b-1pfip5u8nv] {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 192, 192, 0.5);
+    border-radius: 10px;
+    border: none;
+    padding: 0.35rem 0.6rem;
+    transition: background .2s ease;
 }
 
+.navbar-toggler:hover[b-1pfip5u8nv] {
+    background-color: rgba(255, 172, 172, 0.8);
+}
+
+/* Top bar */
 .top-row[b-1pfip5u8nv] {
     height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
+/* Brand (username) */
 .navbar-brand[b-1pfip5u8nv] {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #c75c5c;
 }
 
+/* Icon style */
 .oi[b-1pfip5u8nv] {
     width: 2rem;
     font-size: 1.1rem;
     vertical-align: text-top;
+    position: relative;
     top: -2px;
+    color: #c75c5c;
 }
 
+/* Nav items */
 .nav-item[b-1pfip5u8nv] {
-    font-size: 0.9rem;
-    padding-bottom: 0.5rem;
+    font-size: 0.95rem;
+    padding-bottom: 0.4rem;
 }
 
-    .nav-item:first-of-type[b-1pfip5u8nv] {
-        padding-top: 1rem;
-    }
+.nav-item:first-of-type[b-1pfip5u8nv] {
+    padding-top: 1rem;
+}
 
-    .nav-item:last-of-type[b-1pfip5u8nv] {
-        padding-bottom: 1rem;
-    }
+.nav-item:last-of-type[b-1pfip5u8nv] {
+    padding-bottom: 1rem;
+}
 
-    .nav-item[b-1pfip5u8nv]  a {
-        color: #d7d7d7;
-        border-radius: 4px;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        line-height: 3rem;
-    }
+/* Link style */
+.nav-item[b-1pfip5u8nv]  a {
+    color: #c75c5c;
+    border-radius: 12px;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
 
+/* Active link */
 .nav-item[b-1pfip5u8nv]  a.active {
-    background-color: rgba(255,255,255,0.25);
-    color: white;
+    background-color: #f9cccc;
+    color: #b24b4b;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
+/* Hover */
 .nav-item[b-1pfip5u8nv]  a:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
+    background-color: #ffe3e3;
+    transform: translateX(4px);
+    color: #b24b4b;
 }
 
+/* Desktop mode */
 @media (min-width: 641px) {
     .navbar-toggler[b-1pfip5u8nv] {
         display: none;
     }
 
     .collapse[b-1pfip5u8nv] {
-        /* Never collapse the sidebar for wide screens */
-        display: block;
+        display: block !important;
     }
 }

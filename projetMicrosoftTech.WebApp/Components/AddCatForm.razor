@@ -1,53 +1,87 @@
-﻿@using projetMicrosoftTech.Persistence
-@using projetMicrosoftTech.WebApp.Clients
-@inject ICatClient Client
+﻿@using projetMicrosoftTech.WebApp.Clients
+@using projetMicrosoftTech.Persistence
+@inject ICatClient httpClient
 
-<EditForm EditContext="editContext" OnValidSubmit="Submit" FormName="add-todo-item-form">
-    <h4>Ajouter un nouveau chat</h4>
+<EditForm EditContext="editContext" OnValidSubmit="Submit">
     <div class="mb-3">
-        <label for="catItem" class="form-label">Nom du chat</label>
-        <InputText type="text" class="form-control" id="catItem" placeholder="Entrez le nom du chat" @bind-Value="Model!.name" required/>
-    </div>
-    
-    <div>
+        <label for="catName" class="form-label">Nom du chat</label>
+        <InputText id="catName" class="form-control" @bind-Value="Model!.name" placeholder="Entrez le nom du chat" />
         <ValidationMessage For="() => Model!.name" />
     </div>
-    
+
+    <div class="mb-3">
+        <label for="catAge" class="form-label">Âge</label>
+        <InputNumber id="catAge" class="form-control" @bind-Value="Model!.age" />
+        <ValidationMessage For="() => Model!.age" />
+    </div>
+
+    <div class="mb-3">
+        <label for="catSex" class="form-label">Sexe</label>
+        <InputSelect id="catSex" class="form-control" @bind-Value="Model!.sex">
+            <option value="">Sélectionnez</option>
+            <option value="mâle">Mâle</option>
+            <option value="femelle">Femelle</option>
+        </InputSelect>
+        <ValidationMessage For="() => Model!.sex" />
+    </div>
+
+    <div class="mb-3">
+        <label for="catDescription" class="form-label">Description</label>
+        <InputTextArea id="catDescription" class="form-control" @bind-Value="Model!.description" rows="3" />
+    </div>
+
+    <div class="mb-3">
+        <label for="catPhotos" class="form-label">Photos du chat</label>
+        <InputFile id="catPhotos" OnChange="HandleSelectedFiles" multiple />
+        @if (selectedFiles.Count > 0)
+        {
+            <ul>
+                @foreach (var file in selectedFiles)
+                {
+                    <li>@file.Name (@file.Size / 1024) KB</li>
+                }
+            </ul>
+        }
+    </div>
+
     <button type="submit" class="btn btn-primary">Ajouter le chat</button>
 </EditForm>
 
 @code {
-    [SupplyParameterFromForm] 
     private CatFormItem? Model { get; set; }
-    
     private EditContext? editContext;
     private ValidationMessageStore? messageStore;
 
-    [Parameter] 
+    private List<IBrowserFile> selectedFiles = new();
+
+    [Parameter]
     public EventCallback OnCatAdded { get; set; }
 
     protected override void OnInitialized()
     {
         Model ??= new CatFormItem();
         editContext = new EditContext(Model);
-        editContext.OnValidationRequested += HandleValidationRequested;
         messageStore = new ValidationMessageStore(editContext);
+        editContext.OnValidationRequested += HandleValidationRequested;
     }
-    
-    private void HandleValidationRequested(object? sender,
-        ValidationRequestedEventArgs args)
+
+    private void HandleValidationRequested(object? sender, ValidationRequestedEventArgs args)
     {
         messageStore?.Clear();
 
-        // Custom validation logic
         if (string.IsNullOrWhiteSpace(Model!.name))
-        {
-            messageStore?.Add(() => Model.name, "Title is required.");
-        }
+            messageStore?.Add(() => Model.name, "Le nom du chat est requis.");
 
-        if (Model.name.Length > 100)
+        if (Model.age < 0)
+            messageStore?.Add(() => Model.age, "L'âge doit être positif.");
+    }
+
+    private void HandleSelectedFiles(InputFileChangeEventArgs e)
+    {
+        selectedFiles.Clear();
+        foreach (var file in e.GetMultipleFiles())
         {
-            messageStore?.Add(() => Model.name, "Title cannot exceed 100 characters.");
+            selectedFiles.Add(file);
         }
     }
 
@@ -55,19 +89,44 @@
     {
         if (Model is not null)
         {
-            await Client.CreateCatItemAsync(new Cat()
+            // Crée le chat
+            var newCat = new Cat
             {
-                Id = 0,
+                id = 0,
                 name = Model.name,
-            });
+                age = Model.age,
+                sex = Model.sex,
+                description = Model.description
+            };
+
+            // Envoie vers ton API
+            var createdCat = await httpClient.CreateCatItemAsync(newCat);
+
+            // Upload des photos
+            foreach (var file in selectedFiles)
+            {
+                using var memoryStream = new MemoryStream();
+                using var fileStream = file.OpenReadStream(maxAllowedSize: 5_000_000);
+                await fileStream.CopyToAsync(memoryStream);
+                var buffer = memoryStream.ToArray();
+
+                await httpClient.UploadCatPhotoAsync(createdCat.id, file.Name, buffer);
+            }
+
+            if (OnCatAdded.HasDelegate)
+                await OnCatAdded.InvokeAsync();
+
+            Model = new CatFormItem();
+            selectedFiles.Clear();
+            editContext = new EditContext(Model);
         }
-        await OnCatAdded.InvokeAsync();
-        Model = new CatFormItem();
     }
 
     public class CatFormItem
     {
         public string name { get; set; } = string.Empty;
+        public int age { get; set; }
+        public string sex { get; set; } = string.Empty;
+        public string description { get; set; } = string.Empty;
     }
-
 }

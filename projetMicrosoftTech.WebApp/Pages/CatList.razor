@@ -1,24 +1,8 @@
-﻿@page "/"
-@using projetMicrosoftTech.WebApp.Clients
-@using projetMicrosoftTech.Persistence
-@using projetMicrosoftTech.WebApp.Components
+﻿@page "/cats"
+<link href="css/catList.css" rel="stylesheet" />
 @inject ICatClient httpClient
-
-@code {
-
-    private List<Cat>? cats = null;
-
-    protected override async Task OnInitializedAsync()
-    {
-        await LoadCats();
-    }
-    private async Task LoadCats()
-    {
-        cats = await httpClient.GetCatItemsAsync();
-    }
-}
-
-<AddCatForm OnCatAdded="LoadCats" />
+@inject IConfiguration Configuration
+@attribute [Authorize]
 
 <h3>Liste des chats</h3>
 
@@ -28,10 +12,30 @@
 }
 else
 {
-    <ul>
+    <div class="cat-cards-container" style="display:flex; flex-wrap:wrap; gap:1rem;">
         @foreach (var cat in cats)
         {
-            <li>@cat.name</li>
+            <div class="cat-card">
+                <img src="@($"{Configuration["ApiBaseUrl"]}/images/{cat.photos?.FirstOrDefault()?.photoUrl ?? "default.png"}")" alt="@cat.name" />
+                <h4>@cat.name</h4>
+                <p><strong>Âge :</strong> @cat.age ans</p>
+                <p><strong>Sexe :</strong> @cat.sex</p>
+                <p>@cat.description</p>
+            </div>
         }
-    </ul>
+    </div>
+}
+
+@code {
+    private List<Cat>? cats = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadCats();
+    }
+
+    private async Task LoadCats()
+    {
+        cats = await httpClient.GetCatItemsAsync();
+    }
 }

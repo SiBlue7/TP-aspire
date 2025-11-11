@@ -216,10 +216,7 @@ C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\qnfamuq5tv-wk8x8xm0ah.gz
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\9hiza2oop9-sjnzgf7e1h.gz
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\ad96qlcpc9-8h4oiah9s0.gz
-C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\707c4xtl7f-1fpfb6x0uo.gz
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\fnzwjb0oju-61n19gt1b8.gz
-C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\jhv3uq05zi-jiyff1j5lv.gz
-C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\ixubdly7b3-jiyff1j5lv.gz
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\staticwebassets.development.json
@@ -230,3 +227,9 @@ C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\projetMicrosoftTech.WebApp.pdb
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\projetMicrosoftTech.WebApp.genruntimeconfig.cache
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\ref\projetMicrosoftTech.WebApp.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\707c4xtl7f-rra8jwb762.gz
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\jhv3uq05zi-wlbwsukh09.gz
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\ixubdly7b3-wlbwsukh09.gz
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\jw30fl7qe8-tkks1g82ga.gz
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\ukhj9fgewb-rmjc7cyqre.gz

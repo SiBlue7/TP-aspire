@@ -1,0 +1,33 @@
+﻿@page "/favorites"
+@attribute [Authorize]
+
+@inject AuthenticationStateProvider AuthStateProvider
+
+<h3>Favoris</h3>
+
+@if (!isAuthenticated)
+{
+    <p>Vous devez être connecté pour voir vos favoris.</p>
+}
+else if (isAdmin)
+{
+    <p>Cette page est réservée aux utilisateurs non administrateurs.</p>
+}
+else
+{
+    <p>Voici vos favoris :</p>
+    <!-- Ici tu peux afficher la liste des favoris -->
+}
+
+@code {
+    private bool isAuthenticated = false;
+    private bool isAdmin = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        isAuthenticated = user.Identity?.IsAuthenticated ?? false;
+        isAdmin = user.IsInRole("admin");
+    }
+}
