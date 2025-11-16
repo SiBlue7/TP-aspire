@@ -8,4 +8,6 @@ public interface ICatClient
     Task<Cat> CreateCatItemAsync(Cat item);
     
     Task UploadCatPhotoAsync(int catId, string fileName, byte[] fileData);
+    Task<bool> DeleteCatItemAsync(int catId);
+
 }

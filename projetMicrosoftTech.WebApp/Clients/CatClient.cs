@@ -40,4 +40,10 @@ public class CatClient : ICatClient
         var response = await _httpClient.PostAsync($"/api/cats/{catId}/photos", content);
         response.EnsureSuccessStatusCode();
     }
+    
+    public async Task<bool> DeleteCatItemAsync(int catId)
+    {
+        var response = await _httpClient.DeleteAsync($"/api/cats/{catId}");
+        return response.IsSuccessStatusCode;
+    }
 }

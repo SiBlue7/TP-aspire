@@ -13,6 +13,7 @@ public class CatItemConfiguration : IEntityTypeConfiguration<Cat>
         builder.Property(t => t.age).IsRequired();
         builder.Property(t => t.sex).IsRequired();
         builder.Property(t => t.description).IsRequired().HasMaxLength(1000);
+        builder.Property(t => t.createdByUserId).IsRequired().HasMaxLength(200);
         
         builder
             .HasMany(c => c.photos)

@@ -94,7 +94,8 @@
                 name = Model.name,
                 age = Model.age,
                 sex = Model.sex,
-                description = Model.description
+                description = Model.description ,
+                createdByUserId = ""
             };
 
             var createdCat = await httpClient.CreateCatItemAsync(newCat);

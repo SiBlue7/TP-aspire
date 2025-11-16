@@ -19,7 +19,7 @@ builder.Services.AddDbContext<MyAppDbContext>(options =>
         {
             cat = new Cat
             {
-                name = "Kohaku", age = 1, sex = "mâle",
+                name = "Kohaku", age = 1, sex = "mâle", createdByUserId = "fake-id",
                 description = "Mon Kohaku, le plus beau et le plus parfait des chats existants en ce monde !"
             };
             context.Set<Cat>().Add(cat);
@@ -36,7 +36,7 @@ builder.Services.AddDbContext<MyAppDbContext>(options =>
         {
             cat = new Cat
             {
-                name = "Kohaku", age = 1, sex = "mâle",
+                name = "Kohaku", age = 1, sex = "mâle", createdByUserId = "fake-id",
                 description = "Mon Kohaku, le plus beau et le plus parfait des chats existants en ce monde !"
             };
             context.Set<Cat>().Add(cat);
