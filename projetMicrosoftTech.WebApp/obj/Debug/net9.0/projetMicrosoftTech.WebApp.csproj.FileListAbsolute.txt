@@ -231,5 +231,5 @@ C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\707c4xtl7f-rra8jwb762.gz
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\jhv3uq05zi-wlbwsukh09.gz
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\ixubdly7b3-wlbwsukh09.gz
-C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\jw30fl7qe8-tkks1g82ga.gz
-C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\ukhj9fgewb-rmjc7cyqre.gz
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\ukhj9fgewb-q8jy1fsuob.gz
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.WebApp\obj\Debug\net9.0\compressed\jw30fl7qe8-h86pyfqrgq.gz

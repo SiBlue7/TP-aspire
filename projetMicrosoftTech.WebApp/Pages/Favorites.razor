@@ -1,7 +1,11 @@
 ﻿@page "/favorites"
-@attribute [Authorize]
+<link href="css/catList.css" rel="stylesheet" />
 
 @inject AuthenticationStateProvider AuthStateProvider
+@inject IFavoritesClient favoritesClient
+@inject ICatClient httpClient
+@inject IConfiguration Configuration
+@attribute [Authorize]
 
 <h3>Favoris</h3>
 
@@ -13,15 +17,35 @@ else if (isAdmin)
 {
     <p>Cette page est réservée aux utilisateurs non administrateurs.</p>
 }
+else if (favoriteCats == null)
+{
+    <p>Chargement...</p>
+}
+else if (!favoriteCats.Any())
+{
+    <p>Vous n'avez aucun chat en favoris pour le moment.</p>
+}
 else
 {
-    <p>Voici vos favoris :</p>
-    <!-- Ici tu peux afficher la liste des favoris -->
+    <div class="cat-cards-container">
+        @foreach (var cat in favoriteCats)
+        {
+            <div class="cat-card">
+                <img src="@($"{Configuration["ApiBaseUrl"]}/images/{cat.photos?.FirstOrDefault()?.photoUrl ?? "default.png"}")" alt="@cat.name" />
+                <h4>@cat.name</h4>
+                <p><strong>Âge :</strong> @cat.age ans</p>
+                <p><strong>Sexe :</strong> @cat.sex</p>
+                <p>@cat.description</p>
+            </div>
+        }
+    </div>
 }
 
 @code {
     private bool isAuthenticated = false;
     private bool isAdmin = false;
+
+    private List<Cat>? favoriteCats;
 
     protected override async Task OnInitializedAsync()
     {
@@ -29,5 +53,19 @@ else
         var user = authState.User;
         isAuthenticated = user.Identity?.IsAuthenticated ?? false;
         isAdmin = user.IsInRole("admin");
+
+        if (isAuthenticated && !isAdmin)
+        {
+            await LoadFavorites();
+        }
+    }
+
+    private async Task LoadFavorites()
+    {
+        var favorites = await favoritesClient.GetMyFavoritesAsync();
+        var catIds = favorites.Select(f => f.catId).ToList();
+        var allCats = await httpClient.GetCatItemsAsync();
+
+        favoriteCats = allCats.Where(c => catIds.Contains(c.id)).ToList();
     }
 }

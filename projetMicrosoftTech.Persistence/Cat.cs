@@ -12,4 +12,5 @@ public class Cat
     public string sex { get; set; }
 
     public List<Photo> photos { get; set; } = new();
+    public List<Favorite> favorites { get; set; } = new();
 }

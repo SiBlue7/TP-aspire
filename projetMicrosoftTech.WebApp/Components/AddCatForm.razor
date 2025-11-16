@@ -1,6 +1,4 @@
-﻿@using projetMicrosoftTech.WebApp.Clients
-@using projetMicrosoftTech.Persistence
-@inject ICatClient httpClient
+﻿@inject ICatClient httpClient
 
 <EditForm EditContext="editContext" OnValidSubmit="Submit">
     <div class="mb-3">
@@ -99,10 +97,8 @@
                 description = Model.description
             };
 
-            // Envoie vers ton API
             var createdCat = await httpClient.CreateCatItemAsync(newCat);
 
-            // Upload des photos
             foreach (var file in selectedFiles)
             {
                 using var memoryStream = new MemoryStream();

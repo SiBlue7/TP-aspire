@@ -1,7 +1,6 @@
 var builder = DistributedApplication.CreateBuilder(args);
-var sql = builder.AddSqlServer("sql")
-    .WithLifetime(ContainerLifetime.Persistent)
-    .WithDataVolume();
+var sql = builder.AddSqlServer("sql", port: 1433)
+    .WithLifetime(ContainerLifetime.Persistent);
 var db = sql.AddDatabase("KohakuDB");
 
 var apiService = builder.AddProject<Projects.projetMicrosoftTech_ApiService>("apiservice")

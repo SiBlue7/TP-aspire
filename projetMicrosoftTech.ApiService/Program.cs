@@ -40,7 +40,7 @@ builder.Services.AddDbContext<MyAppDbContext>(options =>
                 description = "Mon Kohaku, le plus beau et le plus parfait des chats existants en ce monde !"
             };
             context.Set<Cat>().Add(cat);
-            context.Set<Photo>().Add(new Photo { cat = cat, photoUrl = ""});
+            context.Set<Photo>().Add(new Photo { cat = cat, photoUrl = "Kohaku.jpeg"});
             await context.SaveChangesAsync(cancellationToken);
         }
     });
@@ -67,6 +67,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddAuthorization();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -82,61 +83,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-// --- Minimal API endpoints ---
-app.MapGet("/api/cats", [Authorize] async (MyAppDbContext db) => 
-    await db.Cat.Include(c => c.photos).ToListAsync());
-
-
-app.MapPost("/api/cats", [Authorize] async (Cat item, MyAppDbContext db) =>
-{
-    db.Cat.Add(item);
-    await db.SaveChangesAsync();
-    return Results.Created($"/api/cats/{item.id}", item);
-});
-
-app.MapPost("/api/cats/{catId}/photos", [Authorize] async (int catId, HttpRequest request, MyAppDbContext db) =>
-{
-    // Vérifier que le chat existe
-    if (!await db.Cat.AnyAsync(c => c.id == catId))
-        return Results.NotFound($"Chat avec l'id {catId} introuvable.");
-
-    // Lire les fichiers depuis le multipart form
-    if (!request.HasFormContentType)
-        return Results.BadRequest("Le contenu doit être de type multipart/form-data.");
-
-    var form = await request.ReadFormAsync();
-    var file = form.Files.FirstOrDefault();
-    if (file == null || file.Length == 0)
-        return Results.BadRequest("Aucun fichier envoyé.");
-    
-    var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
-    var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
-    if (!allowedExtensions.Contains(extension))
-        return Results.BadRequest("Type de fichier non autorisé.");
-    
-    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
-    if (!Directory.Exists(uploadsFolder))
-        Directory.CreateDirectory(uploadsFolder);
-
-    var filePath = Path.Combine(uploadsFolder, file.FileName);
-
-    using (var stream = new FileStream(filePath, FileMode.Create))
-    {
-        await file.CopyToAsync(stream);
-    }
-
-    var photo = new Photo
-    {
-        catId = catId,
-        photoUrl = file.FileName
-    };
-
-    db.Photo.Add(photo);
-    await db.SaveChangesAsync();
-
-    return Results.Created($"/api/cats/{catId}/photos/{photo.id}", photo);
-});
+app.MapControllers();
 
 app.UseAuthentication();
 app.UseAuthorization();

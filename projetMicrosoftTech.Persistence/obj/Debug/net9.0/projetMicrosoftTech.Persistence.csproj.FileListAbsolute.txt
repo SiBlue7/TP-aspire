@@ -24,3 +24,5 @@ C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persis
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\refint\projetMicrosoftTech.Persistence.dll
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.pdb
 C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\ref\projetMicrosoftTech.Persistence.dll
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\bin\Debug\net9.0\projetMicrosoftTech.Persistence.runtimeconfig.json
+C:\Users\themi\Desktop\CoursM1\M2\Microsoft\TP-aspire\projetMicrosoftTech.Persistence\obj\Debug\net9.0\projetMicrosoftTech.Persistence.genruntimeconfig.cache

@@ -9,6 +9,7 @@
 
 /* Carte individuelle */
 .cat-card {
+    position: relative; /* Pour positionner l'étoile */
     background: #fff7f0;
     border-radius: 20px;
     padding: 1rem;
@@ -19,6 +20,23 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+/* Étoile favorite */
+.favorite-star {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.favorite-star.favorited {
+    color: gold;
+}
+.favorite-star:hover {
+    color: #ffcc00;
 }
 
 /* Effet au survol */
@@ -60,4 +78,23 @@
 p.loading {
     font-style: italic;
     color: #888;
+}
+
+/* Étoile favorite */
+.favorite-star {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.8rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    user-select: none;
+}
+.favorite-star.favorited {
+    color: gold;
+}
+.favorite-star:hover {
+    color: #ffcc00;
+    transform: scale(1.2);
 }

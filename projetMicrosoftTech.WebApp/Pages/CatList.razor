@@ -1,6 +1,7 @@
 ﻿@page "/cats"
 <link href="css/catList.css" rel="stylesheet" />
 @inject ICatClient httpClient
+@inject IFavoritesClient favoritesClient
 @inject IConfiguration Configuration
 @attribute [Authorize]
 
@@ -12,10 +13,15 @@
 }
 else
 {
-    <div class="cat-cards-container" style="display:flex; flex-wrap:wrap; gap:1rem;">
+    <div class="cat-cards-container">
         @foreach (var cat in cats)
         {
+            bool isFav = favoriteCatIds.Contains(cat.id);
             <div class="cat-card">
+                <span class="favorite-star @(isFav ? "favorited" : "")"
+                      @onclick="() => ToggleFavorite(cat.id)">
+                    &#9733;
+                </span>
                 <img src="@($"{Configuration["ApiBaseUrl"]}/images/{cat.photos?.FirstOrDefault()?.photoUrl ?? "default.png"}")" alt="@cat.name" />
                 <h4>@cat.name</h4>
                 <p><strong>Âge :</strong> @cat.age ans</p>
@@ -28,14 +34,36 @@ else
 
 @code {
     private List<Cat>? cats = null;
+    private HashSet<int> favoriteCatIds = new();
 
     protected override async Task OnInitializedAsync()
     {
         await LoadCats();
+        await LoadFavorites();
     }
 
     private async Task LoadCats()
     {
         cats = await httpClient.GetCatItemsAsync();
+    }
+
+    private async Task LoadFavorites()
+    {
+        var favorites = await favoritesClient.GetMyFavoritesAsync();
+        favoriteCatIds = favorites.Select(f => f.catId).ToHashSet();
+    }
+
+    private async Task ToggleFavorite(int catId)
+    {
+        if (favoriteCatIds.Contains(catId))
+        {
+            await favoritesClient.RemoveFavoriteAsync(catId);
+            favoriteCatIds.Remove(catId);
+        }
+        else
+        {
+            await favoritesClient.AddFavoriteAsync(catId);
+            favoriteCatIds.Add(catId);
+        }
     }
 }
