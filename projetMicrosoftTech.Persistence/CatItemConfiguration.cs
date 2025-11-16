@@ -26,5 +26,11 @@ public class CatItemConfiguration : IEntityTypeConfiguration<Cat>
             .WithOne(p => p.cat)
             .HasForeignKey(p => p.catId)
             .OnDelete(DeleteBehavior.Cascade);
+        
+        builder
+            .HasMany(c => c.Adoptions)
+            .WithOne(p => p.cat)
+            .HasForeignKey(p => p.catId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

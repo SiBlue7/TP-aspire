@@ -14,4 +14,5 @@ public class Cat
 
     public List<Photo> photos { get; set; } = new();
     public List<Favorite> favorites { get; set; } = new();
+    public List<Adoption> Adoptions { get; set; } = new();
 }

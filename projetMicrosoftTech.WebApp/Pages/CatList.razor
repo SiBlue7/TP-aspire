@@ -2,6 +2,7 @@
 <link href="css/catList.css" rel="stylesheet" />
 @inject ICatClient httpClient
 @inject IFavoritesClient favoritesClient
+@inject IAdoptionClient adoptionClient
 @inject IUserClient userClient
 @inject IConfiguration Configuration
 @inject AuthenticationStateProvider authStateProvider
@@ -20,7 +21,7 @@ else
         {
             bool isFav = favoriteCatIds.Contains(cat.id);
             bool isOwner = cat.createdByUserId == userId;
-            Console.WriteLine($"ID connecté : {userId}, ID du chat : {cat.createdByUserId}");
+            
             <div class="cat-card">
                 <span class="favorite-star @(isFav ? "favorited" : "")"
                       @onclick="() => ToggleFavorite(cat.id)">
@@ -39,8 +40,35 @@ else
                 <p><strong>Âge :</strong> @cat.age ans</p>
                 <p><strong>Sexe :</strong> @cat.sex</p>
                 <p>@cat.description</p>
+                
+                @if (!isOwner)
+                {
+                    <button class="adopt-button" @onclick="() => RequestAdoption(cat.id)">
+                        🏠 Adopter
+                    </button>
+                }
             </div>
         }
+    </div>
+}
+
+@if (showAdoptionModal)
+{
+    <div class="modal-overlay" @onclick="CloseModal">
+        <div class="modal-content" @onclick:stopPropagation="true">
+            <h4>Demande d'adoption</h4>
+            <p>Pourquoi souhaitez-vous adopter ce chat ?</p>
+            <textarea @bind="adoptionComment"
+                      rows="4"></textarea>
+            <div class="modal-buttons">
+                <button class="btn-confirm" @onclick="ConfirmAdoption">Envoyer</button>
+                <button class="btn-cancel" @onclick="CloseModal">Annuler</button>
+            </div>
+            @if (!string.IsNullOrEmpty(adoptionMessage))
+            {
+                <p class="@(adoptionSuccess ? "success-message" : "error-message")">@adoptionMessage</p>
+            }
+        </div>
     </div>
 }
 
@@ -48,11 +76,15 @@ else
     private List<Cat>? cats = null;
     private HashSet<int> favoriteCatIds = new();
     private string userId = string.Empty;
+    private bool showAdoptionModal = false;
+    private int selectedCatId;
+    private string adoptionComment = string.Empty;
+    private string adoptionMessage = string.Empty;
+    private bool adoptionSuccess = false;
 
     protected override async Task OnInitializedAsync()
     {
         userId = await userClient.GetCurrentUserIdAsync();
-
         await LoadCats();
         await LoadFavorites();
     }
@@ -85,5 +117,38 @@ else
         {
             cats = cats?.Where(c => c.id != catId).ToList();
         }
+    }
+
+    private void RequestAdoption(int catId)
+    {
+        selectedCatId = catId;
+        adoptionComment = string.Empty;
+        adoptionMessage = string.Empty;
+        showAdoptionModal = true;
+    }
+
+    private async Task ConfirmAdoption()
+    {
+        var success = await adoptionClient.RequestAdoptionAsync(selectedCatId, adoptionComment);
+        
+        if (success)
+        {
+            adoptionMessage = "Demande d'adoption envoyée avec succès !";
+            adoptionSuccess = true;
+            await Task.Delay(2000);
+            CloseModal();
+        }
+        else
+        {
+            adoptionMessage = "Erreur lors de l'envoi de la demande.";
+            adoptionSuccess = false;
+        }
+    }
+
+    private void CloseModal()
+    {
+        showAdoptionModal = false;
+        adoptionComment = string.Empty;
+        adoptionMessage = string.Empty;
     }
 }

@@ -34,6 +34,11 @@ builder.Services.AddHttpClient<IUserClient, UserClient>(client =>
     client.BaseAddress = new Uri("https+http://apiservice");
 }).AddHttpMessageHandler<TokenHandlers>();
 
+builder.Services.AddHttpClient<IAdoptionClient, AdoptionClient>(client =>
+{
+    client.BaseAddress = new Uri("https+http://apiservice");
+}).AddHttpMessageHandler<TokenHandlers>();
+
 builder.Services.AddAntiforgery();
 
 builder.Services.AddAuthentication(options =>

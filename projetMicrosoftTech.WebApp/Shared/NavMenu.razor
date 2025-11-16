@@ -74,6 +74,6 @@
 
         isAuthenticated = user.Identity?.IsAuthenticated ?? false;
         userName = isAuthenticated ? user.Identity.Name : "";
-        isAdmin = user.IsInRole("admin"); // Role pour administrateur
+        isAdmin = user.IsInRole("administrateur");
     }
 }
