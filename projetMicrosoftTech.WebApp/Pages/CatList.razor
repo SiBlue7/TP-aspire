@@ -44,7 +44,7 @@ else
                 @if (!isOwner)
                 {
                     <button class="adopt-button" @onclick="() => RequestAdoption(cat.id)">
-                        🏠 Adopter
+                        Adopter
                     </button>
                 }
             </div>
@@ -130,7 +130,7 @@ else
     private async Task ConfirmAdoption()
     {
         var success = await adoptionClient.RequestAdoptionAsync(selectedCatId, adoptionComment);
-        
+
         if (success)
         {
             adoptionMessage = "Demande d'adoption envoyée avec succès !";
