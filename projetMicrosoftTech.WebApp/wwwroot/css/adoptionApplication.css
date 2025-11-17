@@ -1,0 +1,132 @@
+﻿/* Conteneur global */
+.request-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+/* Carte d'adoption */
+.request-card {
+    background: #fff7f0;
+    border-radius: 20px;
+    padding: 1rem;
+    width: 280px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.request-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* Photo du chat */
+.cat-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid #ffd6ba;
+    margin-bottom: 1rem;
+}
+
+/* Titre */
+.request-card h4 {
+    color: #ff6b81;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+/* Texte */
+.request-card p {
+    color: #444;
+    font-size: 0.95rem;
+    margin: 0.25rem 0;
+}
+
+.comment {
+    background: #fff1e6;
+    padding: 0.5rem;
+    border-radius: 12px;
+    border: 1px solid #ffd6ba;
+    margin-top: 0.5rem;
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.status-pending {
+    background: #f5b971;
+}
+
+.status-valid {
+    background: #65c18c;
+}
+
+.status-rejected {
+    background: #e57373;
+}
+
+/* Boutons actions */
+.actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.btn-accept,
+.btn-reject {
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    border: none;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: 600;
+}
+
+.btn-accept {
+    background: linear-gradient(135deg, #65c18c 0%, #8fd3a5 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(101, 193, 140, 0.3);
+}
+
+.btn-accept:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(101, 193, 140, 0.4);
+}
+
+.btn-reject {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.btn-reject:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+}
+
+/* Messages */
+.loading {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+}
+
+.no-requests {
+    text-align: center;
+    color: #444;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+}

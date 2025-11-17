@@ -135,12 +135,13 @@ else
         {
             adoptionMessage = "Demande d'adoption envoyée avec succès !";
             adoptionSuccess = true;
-            await Task.Delay(2000);
+            StateHasChanged();
+            await Task.Delay(1000);
             CloseModal();
         }
         else
         {
-            adoptionMessage = "Erreur lors de l'envoi de la demande.";
+            adoptionMessage = "Vous ne pouvez envoyer qu'une demande par animal !";
             adoptionSuccess = false;
         }
     }

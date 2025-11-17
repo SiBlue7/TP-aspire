@@ -1,4 +1,6 @@
-﻿using projetMicrosoftTech.Persistence;
+﻿using System.Text.Json;
+using projetMicrosoftTech.Persistence;
+using projetMicrosoftTech.WebApp.Dtos;
 
 namespace projetMicrosoftTech.WebApp.Clients;
 
@@ -23,8 +25,25 @@ public class AdoptionClient : IAdoptionClient
         return await _httpClient.GetFromJsonAsync<List<Adoption>>("/api/adoption/my-requests") ?? new();
     }
 
-    public async Task<List<Adoption>> GetAdoptionRequestsForMyCatsAsync()
+    public async Task<List<AdoptionWithCatDto>> GetAdoptionRequestsForMyCatsAsync()
     {
-        return await _httpClient.GetFromJsonAsync<List<Adoption>>("/api/adoption/for-my-cats") ?? new();
+        var list = await _httpClient.GetFromJsonAsync<List<AdoptionWithCatDto>>("/api/adoption/for-my-cats") 
+                   ?? new List<AdoptionWithCatDto>();
+
+        Console.WriteLine("=== Adoption Requests ===");
+        Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(list, new JsonSerializerOptions
+        {
+            WriteIndented = true
+        }));
+
+        return list;
+    }
+
+    
+    public async Task<bool> UpdateStatusAsync(int id, AdoptionStatus status)
+    {
+        var obj = new { Status = status };
+        var response = await _httpClient.PutAsJsonAsync($"/api/adoption/{id}/status", obj);
+        return response.IsSuccessStatusCode;
     }
 }

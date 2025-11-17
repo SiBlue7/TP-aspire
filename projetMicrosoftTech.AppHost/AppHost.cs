@@ -13,8 +13,6 @@ builder.AddProject<Projects.projetMicrosoftTech_WebApp>("webapp")
 
 var keycloak = builder.AddKeycloak("keycloak", 8090)
     .WithBindMount("./keycloak", "/opt/keycloak/data/import")
-    .WithEnvironment("KEYCLOAK_ADMIN", "admin")
-    .WithEnvironment("KEYCLOAK_ADMIN_PASSWORD", "admin")
     .WithEnvironment("KEYCLOAK_IMPORT", "/opt/keycloak/data/import/realm-export.json")
     .WithLifetime(ContainerLifetime.Persistent);
 

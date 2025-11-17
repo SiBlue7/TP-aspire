@@ -1,0 +1,93 @@
+﻿@page "/adoption-application"
+@using projetMicrosoftTech.WebApp.Dtos
+@attribute [Authorize(Roles = "administrateur")]
+@inject IAdoptionClient adoptionClient
+@inject IConfiguration Configuration
+<link href="css/adoptionApplication.css" rel="stylesheet" />
+<h3>Demandes d'adoption</h3>
+
+@if (requests == null)
+{
+    <p class="loading">Chargement...</p>
+}
+else if (!requests.Any())
+{
+    <p class="no-requests">Aucune demande d'adoption trouvée.</p>
+}
+else
+{
+    <div class="request-cards-container">
+        @foreach (var req in requests)
+        {
+            var photoUrl = $"{Configuration["ApiBaseUrl"]}/images/{req.cat.photos?.FirstOrDefault()?.photoUrl ?? "default.png"}";
+
+            <div class="request-card">
+                <img src="@photoUrl" class="cat-photo" alt="@req.cat.name" />
+
+                <h4>@req.cat.name</h4>
+
+                @if (!string.IsNullOrEmpty(req.comment))
+                {
+                    <p class="comment">
+                        <strong>Commentaire :</strong><br/>
+                        @req.comment
+                    </p>
+                }
+
+                <p>
+                    <strong>Status :</strong>
+                    <span class="status-badge @GetStatusClass(req.status)">
+                        @GetStatusText(req.status)
+                    </span>
+                </p>
+
+                @if (req.status == AdoptionStatus.EnAttente)
+                {
+                    <div class="actions">
+                        <button class="btn-accept" @onclick="() => UpdateStatus(req.id, AdoptionStatus.Valide)">Accepter</button>
+                        <button class="btn-reject" @onclick="() => UpdateStatus(req.id, AdoptionStatus.Refuse)">Refuser</button>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private List<AdoptionWithCatDto>? requests = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        requests = await adoptionClient.GetAdoptionRequestsForMyCatsAsync();
+    }
+
+    private async Task UpdateStatus(int requestId, AdoptionStatus newStatus)
+    {
+        var success = await adoptionClient.UpdateStatusAsync(requestId, newStatus);
+
+        if (success)
+        {
+            var req = requests!.FirstOrDefault(r => r.id == requestId);
+            if (req != null)
+                req.status = newStatus;
+
+            StateHasChanged();
+        }
+    }
+
+    private string GetStatusClass(AdoptionStatus s) =>
+        s switch
+        {
+            AdoptionStatus.Valide => "status-valid",
+            AdoptionStatus.Refuse => "status-rejected",
+            _ => "status-pending"
+        };
+
+    private string GetStatusText(AdoptionStatus s) =>
+        s switch
+        {
+            AdoptionStatus.Valide => "Validée",
+            AdoptionStatus.Refuse => "Refusée",
+            _ => "En attente"
+        };
+}

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using projetMicrosoftTech.ApiService.Dtos;
 using projetMicrosoftTech.Persistence;
 
 namespace projetMicrosoftTech.ApiService.Controllers;
@@ -22,7 +23,6 @@ public class AdoptionController : ControllerBase
         User.FindFirst(ClaimTypes.NameIdentifier)?.Value
         ?? throw new Exception("Impossible de récupérer l'id utilisateur");
 
-    // POST /api/adoption
     [HttpPost]
     public async Task<IActionResult> RequestAdoption([FromBody] CreateAdoptionRequest request)
     {
@@ -57,7 +57,6 @@ public class AdoptionController : ControllerBase
         return Created($"/api/adoption/{adoption.id}", adoption);
     }
 
-    // GET /api/adoption/my-requests
     [HttpGet("my-requests")]
     public async Task<IActionResult> GetMyRequests()
     {
@@ -73,7 +72,6 @@ public class AdoptionController : ControllerBase
         return Ok(adoptions);
     }
 
-    // GET /api/adoption/for-my-cats
     [HttpGet("for-my-cats")]
     public async Task<IActionResult> GetRequestsForMyCats()
     {
@@ -81,15 +79,32 @@ public class AdoptionController : ControllerBase
 
         var adoptions = await _db.Adoption
             .Include(a => a.cat)
-                .ThenInclude(c => c.photos)
+            .ThenInclude(c => c.photos)
             .Where(a => a.cat.createdByUserId == userId)
             .OrderByDescending(a => a.id)
+            .Select(a => new AdoptionWithCatDto
+            {
+                id = a.id,
+                comment = a.comment,
+                status = a.status,
+                askedByUserId = a.askedByUserId,
+                catId = a.catId,
+                cat = new CatDto
+                {
+                    id = a.cat.id,
+                    name = a.cat.name,
+                    photos = a.cat.photos.Select(p => new PhotoDto
+                    {
+                        id = p.id,
+                        photoUrl = p.photoUrl
+                    }).ToList()
+                }
+            })
             .ToListAsync();
 
         return Ok(adoptions);
     }
 
-    // PUT /api/adoption/{id}/status
     [HttpPut("{id}/status")]
     public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateStatusRequest request)
     {

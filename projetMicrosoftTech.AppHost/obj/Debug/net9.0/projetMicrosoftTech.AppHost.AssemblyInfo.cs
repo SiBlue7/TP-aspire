@@ -26,7 +26,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("projetMicrosoftTech.AppHost")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55d883f3534fb828764018966dee6cb5e13d22b8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d227533cadf28470ab60faf56642770fc5b72c2a")]
 [assembly: System.Reflection.AssemblyProductAttribute("projetMicrosoftTech.AppHost")]
 [assembly: System.Reflection.AssemblyTitleAttribute("projetMicrosoftTech.AppHost")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
