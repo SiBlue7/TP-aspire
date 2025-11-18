@@ -1,10 +1,10 @@
-﻿@page "/adoption-application"
+﻿@page "/adoption-application-answer"
 @using projetMicrosoftTech.WebApp.Dtos
-@attribute [Authorize(Roles = "administrateur")]
+@attribute [Authorize(Roles = "adoptant")]
 @inject IAdoptionClient adoptionClient
 @inject IConfiguration Configuration
 <link href="css/adoptionApplication.css" rel="stylesheet" />
-<h3>Demandes d'adoption</h3>
+<h3>Mes Demandes d'adoption</h3>
 
 @if (requests == null)
 {
@@ -25,7 +25,6 @@ else
                 <img src="@photoUrl" class="cat-photo" alt="@req.cat.name" />
 
                 <h4>@req.cat.name</h4>
-                <strong>Demandeur : @req.askedByUserName</strong>
 
                 @if (!string.IsNullOrEmpty(req.comment))
                 {
@@ -41,14 +40,6 @@ else
                         @GetStatusText(req.status)
                     </span>
                 </p>
-
-                @if (req.status == AdoptionStatus.EnAttente)
-                {
-                    <div class="actions">
-                        <button class="btn-accept" @onclick="() => UpdateStatus(req.id, AdoptionStatus.Valide)">Accepter</button>
-                        <button class="btn-reject" @onclick="() => UpdateStatus(req.id, AdoptionStatus.Refuse)">Refuser</button>
-                    </div>
-                }
             </div>
         }
     </div>
@@ -59,21 +50,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        requests = await adoptionClient.GetAdoptionRequestsForMyCatsAsync();
-    }
-
-    private async Task UpdateStatus(int requestId, AdoptionStatus newStatus)
-    {
-        var success = await adoptionClient.UpdateStatusAsync(requestId, newStatus);
-
-        if (success)
-        {
-            var req = requests!.FirstOrDefault(r => r.id == requestId);
-            if (req != null)
-                req.status = newStatus;
-
-            StateHasChanged();
-        }
+        requests = await adoptionClient.GetMyAdoptionRequestsAsync();
     }
 
     private string GetStatusClass(AdoptionStatus s) =>

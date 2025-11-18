@@ -9,6 +9,7 @@ public class AdoptionWithCatDto
     public string comment { get; set; }
     public AdoptionStatus status { get; set; }
     public string askedByUserId { get; set; }
+    public string askedByUserName { get; set; }
     public int catId { get; set; }
     public CatDto cat { get; set; }
 }

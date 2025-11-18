@@ -12,6 +12,7 @@ public class AdoptionItemConfiguration
         builder.Property(t => t.comment).HasMaxLength(500);
         builder.Property(t => t.status).IsRequired();
         builder.Property(t => t.askedByUserId).IsRequired();
+        builder.Property(t => t.askedByUserName).IsRequired();
         builder.Property(t => t.catId).IsRequired();
     }
 }

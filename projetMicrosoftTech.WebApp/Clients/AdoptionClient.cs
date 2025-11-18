@@ -20,9 +20,9 @@ public class AdoptionClient : IAdoptionClient
         return response.IsSuccessStatusCode;
     }
 
-    public async Task<List<Adoption>> GetMyAdoptionRequestsAsync()
+    public async Task<List<AdoptionWithCatDto>> GetMyAdoptionRequestsAsync()
     {
-        return await _httpClient.GetFromJsonAsync<List<Adoption>>("/api/adoption/my-requests") ?? new();
+        return await _httpClient.GetFromJsonAsync<List<AdoptionWithCatDto>>("/api/adoption/my-requests") ?? new();
     }
 
     public async Task<List<AdoptionWithCatDto>> GetAdoptionRequestsForMyCatsAsync()

@@ -19,14 +19,24 @@ public class AdoptionController : ControllerBase
         _db = db;
     }
 
-    private string GetUserId() =>
-        User.FindFirst(ClaimTypes.NameIdentifier)?.Value
-        ?? throw new Exception("Impossible de récupérer l'id utilisateur");
+    private (string UserId, string UserName) GetUserInfo()
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                     ?? throw new Exception("Impossible de récupérer l'id utilisateur");
+
+        var userName =
+            User.FindFirst("preferred_username")?.Value ??
+            User.FindFirst(ClaimTypes.Name)?.Value ??
+            User.FindFirst("name")?.Value ??
+            throw new Exception("Impossible de récupérer le nom utilisateur");
+
+        return (userId, userName);
+    }
 
     [HttpPost]
     public async Task<IActionResult> RequestAdoption([FromBody] CreateAdoptionRequest request)
     {
-        var userId = GetUserId();
+        var (userId, userName) = GetUserInfo();
 
         var cat = await _db.Cat.FindAsync(request.CatId);
         if (cat == null)
@@ -38,6 +48,7 @@ public class AdoptionController : ControllerBase
         var alreadyRequested = await _db.Adoption
             .AnyAsync(a => a.catId == request.CatId 
                         && a.askedByUserId == userId 
+                        && a.askedByUserName == userName 
                         && a.status == AdoptionStatus.EnAttente);
 
         if (alreadyRequested)
@@ -47,6 +58,7 @@ public class AdoptionController : ControllerBase
         {
             catId = request.CatId,
             askedByUserId = userId,
+            askedByUserName = userName,
             comment = request.Comment,
             status = AdoptionStatus.EnAttente
         };
@@ -60,13 +72,32 @@ public class AdoptionController : ControllerBase
     [HttpGet("my-requests")]
     public async Task<IActionResult> GetMyRequests()
     {
-        var userId = GetUserId();
+        var (userId, userName) = GetUserInfo();
 
         var adoptions = await _db.Adoption
             .Where(a => a.askedByUserId == userId)
             .Include(a => a.cat)
                 .ThenInclude(c => c.photos)
             .OrderByDescending(a => a.id)
+            .Select(a => new AdoptionWithCatDto
+            {
+                id = a.id,
+                comment = a.comment,
+                status = a.status,
+                askedByUserId = a.askedByUserId,
+                askedByUserName = a.askedByUserName,
+                catId = a.catId,
+                cat = new CatDto
+                {
+                    id = a.cat.id,
+                    name = a.cat.name,
+                    photos = a.cat.photos.Select(p => new PhotoDto
+                    {
+                        id = p.id,
+                        photoUrl = p.photoUrl
+                    }).ToList()
+                }
+            })
             .ToListAsync();
 
         return Ok(adoptions);
@@ -75,7 +106,7 @@ public class AdoptionController : ControllerBase
     [HttpGet("for-my-cats")]
     public async Task<IActionResult> GetRequestsForMyCats()
     {
-        var userId = GetUserId();
+        var (userId, userName) = GetUserInfo();
 
         var adoptions = await _db.Adoption
             .Include(a => a.cat)
@@ -88,6 +119,7 @@ public class AdoptionController : ControllerBase
                 comment = a.comment,
                 status = a.status,
                 askedByUserId = a.askedByUserId,
+                askedByUserName = a.askedByUserName,
                 catId = a.catId,
                 cat = new CatDto
                 {
@@ -108,6 +140,8 @@ public class AdoptionController : ControllerBase
     [HttpPut("{id}/status")]
     public async Task<IActionResult> UpdateStatus(int id, [FromBody] UpdateStatusRequest request)
     {
+        var (userId, userName) = GetUserInfo();
+        
         var adoption = await _db.Adoption
             .Include(a => a.cat)
             .FirstOrDefaultAsync(a => a.id == id);
@@ -115,7 +149,7 @@ public class AdoptionController : ControllerBase
         if (adoption == null)
             return NotFound("Demande d'adoption introuvable.");
 
-        if (adoption.cat.createdByUserId != GetUserId())
+        if (adoption.cat.createdByUserId != userId)
             return Forbid();
 
         adoption.status = request.Status;
