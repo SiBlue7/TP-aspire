@@ -50,7 +50,7 @@
       {
         "id": "c077173f-34c5-4196-8b35-dd5071038f06",
         "name": "administrateur",
-        "description": "role admin",
+        "description": "Personnes gérant l'adoption des chats",
         "composite": false,
         "clientRole": false,
         "containerId": "e56acda9-f7ec-4e07-9cbe-a68377df21a1",
@@ -58,8 +58,8 @@
       },
       {
         "id": "9041a131-20ac-41a7-a6f1-1a8ac39bf429",
-        "name": "gestionnaire",
-        "description": "Droits en écriture dans notre API",
+        "name": "adoptant",
+        "description": "Personnes voulant adopter un chat",
         "composite": false,
         "clientRole": false,
         "containerId": "e56acda9-f7ec-4e07-9cbe-a68377df21a1",
@@ -110,7 +110,7 @@
       "Client1": [
         {
           "id": "0a2efc07-bfa5-4924-8602-1e7a1a1445db",
-          "name": "gestionnaire",
+          "name": "adoptant",
           "description": "",
           "composite": false,
           "clientRole": true,
@@ -537,7 +537,7 @@
           "temporary": false
         }
       ],
-      "realmRoles": ["gestionnaire", "default-roles-catinder"],
+      "realmRoles": ["adoptant", "default-roles-catinder"],
       "groups": []
     },
     {
