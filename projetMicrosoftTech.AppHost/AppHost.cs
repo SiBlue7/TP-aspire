@@ -7,13 +7,14 @@ var apiService = builder.AddProject<Projects.projetMicrosoftTech_ApiService>("ap
     .WithReference(sql)
     .WaitFor(db);
 
-builder.AddProject<Projects.projetMicrosoftTech_WebApp>("webapp")
-    .WithReference(apiService)
-    .WaitFor(apiService);
-
 var keycloak = builder.AddKeycloak("keycloak", 8090)
     .WithBindMount("./keycloak", "/opt/keycloak/data/import")
     .WithEnvironment("KEYCLOAK_IMPORT", "/opt/keycloak/data/import/realm-export.json")
     .WithLifetime(ContainerLifetime.Persistent);
+
+builder.AddProject<Projects.projetMicrosoftTech_WebApp>("webapp")
+    .WithReference(apiService)
+    .WaitFor(apiService)
+    .WaitFor(keycloak);
 
 builder.Build().Run();
