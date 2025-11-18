@@ -1,0 +1,30 @@
+﻿name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Installer .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restauration des dépendances
+        run: dotnet restore projetMicrosoftTech.sln
+
+      - name: Build de la solution
+        run: dotnet build projetMicrosoftTech.sln --configuration Release --no-restore
