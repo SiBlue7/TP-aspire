@@ -22,3 +22,15 @@
    ```
    https://localhost:7188
     ```
+6. Se connecter avec les identifiants suivants :
+   - Admin :
+   ```
+   Login : admin
+   Password : admin
+   ```
+   - User :
+   ```
+   Login : kiki
+   Password : kiki
+   ```
+   
