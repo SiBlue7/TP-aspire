@@ -14,7 +14,7 @@
    ```
     cd projetMicrosoftTech.AppHost
     ```
-4. Lancer la commande suivante pour lancer le projet :
+4. Lancer la commande suivante pour lancer le projet ou si vous êtes sur Rider appuyer sur le bouton "Run" :
    ```bash
    dotnet run
    ```
