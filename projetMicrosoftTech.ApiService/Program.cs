@@ -41,6 +41,20 @@ builder.Services.AddDbContext<MyAppDbContext>(options =>
             };
             context.Set<Cat>().Add(cat);
             context.Set<Photo>().Add(new Photo { cat = cat, photoUrl = "Kohaku.jpeg"});
+            var cat2 = new Cat
+            {
+                name = "Lilo", age = 1, sex = "femelle", createdByUserId = "22222222-2222-2222-2222-222222222222",
+                description = "Petite Lilo, mignonne et caline !"
+            };
+            context.Set<Cat>().Add(cat2);
+            context.Set<Photo>().Add(new Photo { cat = cat2, photoUrl = "lilo.png"});
+            var cat3 = new Cat
+            {
+                name = "Cookie", age = 3, sex = "mâle", createdByUserId = "22222222-2222-2222-2222-222222222222",
+                description = "Cookie attend impatiemment d'être adopté !"
+            };
+            context.Set<Cat>().Add(cat3);
+            context.Set<Photo>().Add(new Photo { cat = cat3, photoUrl = "default.png"});
             await context.SaveChangesAsync(cancellationToken);
         }
     });

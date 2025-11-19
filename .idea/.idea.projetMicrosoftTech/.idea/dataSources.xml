@@ -8,5 +8,19 @@
       <jdbc-url>Server=127.0.0.1,11684;User ID=sa;Password=J8sJ1de*tx40f4wk{p-QdM;TrustServerCertificate=true</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="sql" uuid="c28df2ca-ba3a-42f3-b33a-9aa07eef96d5">
+      <driver-ref>sqlserver.jb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.jetbrains.jdbc.sqlserver.SqlServerDriver</jdbc-driver>
+      <jdbc-url>Server=127.0.0.1,56517;User ID=sa;Password=J8sJ1de*tx40f4wk{p-QdM;TrustServerCertificate=true</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="sql" uuid="b1b489b3-bc5e-479e-aff9-1da870e062b2">
+      <driver-ref>sqlserver.jb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.jetbrains.jdbc.sqlserver.SqlServerDriver</jdbc-driver>
+      <jdbc-url>Server=127.0.0.1,59719;User ID=sa;Password=J8sJ1de*tx40f4wk{p-QdM;TrustServerCertificate=true</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
