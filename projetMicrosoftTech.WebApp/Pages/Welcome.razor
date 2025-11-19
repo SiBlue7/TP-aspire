@@ -1,10 +1,41 @@
 ﻿@page "/"
 
+@inject ICatClient CatClient
+@inject IConfiguration Configuration
+
 <div class="container">
     <div class="hero">
         <h1 class="display-4">Bienvenue sur Catinder 🐱</h1>
         <p class="lead">Trouvez le chat de vos rêves et offrez-lui un foyer chaleureux.</p>
-        <img src="images/default.png" alt="Chat mignon" class="img-fluid" />
+        
+        @if (isLoading)
+        {
+            <p>Chargement des photos...</p>
+        }
+        else if (!photos.Any())
+        {
+            <img src="images/default.png" alt="Chat mignon" class="img-fluid" />
+        }
+        else
+        {
+            <div class="cat-carousel">
+                <button class="carousel-btn prev" @onclick="PreviousPhoto">&#10094;</button>
+
+                <img src="@photos[currentIndex]"
+                     alt="Chat"
+                     class="img-fluid carousel-image"/>
+
+                <button class="carousel-btn next" @onclick="NextPhoto">&#10095;</button>
+            </div>
+
+            <div class="carousel-indicators">
+                @for (int i = 0; i < photos.Count; i++)
+                {
+                    <span class="indicator @(i == currentIndex ? "active" : "")"
+                          @onclick="() => GoToPhoto(i)"></span>
+                }
+            </div>
+        }
     </div>
 
     <div class="blog-story">
@@ -17,4 +48,66 @@
         <h2>Adopter, c'est offrir une nouvelle vie 🌟</h2>
         <p>Chaque chat a sa propre histoire et mérite un foyer aimant. Chez Catinder, nous croyons que chaque adoption est un nouveau chapitre rempli d'amour et d'aventures. Explorez notre galerie et laissez-vous inspirer !</p>
     </div>
-</div>
+</div> 
+    
+@code {
+    private List<string> photos = new();
+    private int currentIndex = 0;
+    private bool isLoading = true;
+    private Timer? timer;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var cats = await CatClient.GetCatItemsAsync();
+
+            var baseUrl = Configuration["ApiBaseUrl"] ?? "http://localhost:5259/";
+
+            photos = cats
+                .Where(c => c.photos != null)
+                .SelectMany(c => c.photos!)
+                .Where(p => !string.IsNullOrWhiteSpace(p.photoUrl))
+                .Select(p => $"{baseUrl}/images/{p.photoUrl}")
+                .Distinct()
+                .ToList();
+        }
+        catch
+        {
+                
+        }
+        finally
+        {
+            isLoading = false;
+
+            if (photos.Any())
+            {
+                timer = new Timer(_ =>
+                {
+                    NextPhoto();
+                    InvokeAsync(StateHasChanged);
+                }, null, TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(10));
+            }
+        }
+    }
+
+    private void NextPhoto()
+    {
+        if (!photos.Any()) return;
+        currentIndex = (currentIndex + 1) % photos.Count;
+    }
+
+    private void PreviousPhoto()
+    {
+        if (!photos.Any()) return;
+        currentIndex = (currentIndex - 1 + photos.Count) % photos.Count;
+    }
+
+    private void GoToPhoto(int index)
+    {
+        if (index >= 0 && index < photos.Count)
+        {
+            currentIndex = index;
+        }
+    }
+}
